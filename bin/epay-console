@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+irb = RUBY_PLATFORM =~ /(:?mswin|mingw)/ ? 'irb.bat' : 'irb'
+
+libs =  " -r irb/completion"
+libs <<  " -r #{File.dirname(__FILE__) + '/../lib/epay'}"
+load_paths = " -I #{File.dirname(__FILE__) + '/../lib'}"
+puts "Loading epay gem"
+exec "#{irb} #{libs} #{load_paths} --simple-prompt"
