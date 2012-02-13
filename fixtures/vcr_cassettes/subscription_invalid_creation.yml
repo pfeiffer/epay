@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx
+    body: merchantnumber=8887978&cardno=5555555555555118&cvc=999&expmonth=10&expyear=15&amount=0&currency=208&orderid=13291432489546&accepturl=https%3A%2F%2Fssl.ditonlinebetalingssystem.dk%2Fauth%2Fdefault.aspx%3Faccept%3D1&declineurl=https%3A%2F%2Fssl.ditonlinebetalingssystem.dk%2Fauth%2Fdefault.aspx%3Fdecline%3D1&subscription=1&subscriptionname=A%20new%20subscriber
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '359'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - text/html; charset=iso-8859-1
+      Location:
+      - https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?decline=1&error=118&orderid=13291432489546&errortext=Betalingen
+        blev afvist da det indtastede kortnummer ikke kan findes. Pr%f8v og indtaste
+        kortets oplysninger igen eller pr%f8v med et andet betalingskort.
+      Set-Cookie:
+      - ASP.NET_SessionId=ryd5dq554w1e0445sdmkkcrp; path=/; HttpOnly
+      X-Aspnet-Version:
+      - 2.0.50727
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 13 Feb 2012 14:26:28 GMT
+      Content-Length:
+      - '393'
+    body: ! "<html><head><title>Object moved</title></head><body>\r\n<h2>Object moved
+      to <a href=\"https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?decline=1&amp;error=118&amp;orderid=13291432489546&amp;errortext=Betalingen
+      blev afvist da det indtastede kortnummer ikke kan findes. Pr%f8v og indtaste
+      kortets oplysninger igen eller pr%f8v med et andet betalingskort.\">here</a>.</h2>\r\n</body></html>\r\n"
+    http_version: !!null 
+  recorded_at: Mon, 13 Feb 2012 14:27:30 GMT
+recorded_with: VCR 2.0.0.rc1

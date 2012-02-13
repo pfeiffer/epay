@@ -26,17 +26,27 @@ Gem::Specification.new do |s|
   #
   s.add_dependency "rest-client", "~> 1.6.0"
   s.add_dependency "activesupport", "~> 3"
+  s.add_dependency "builder", "~> 3.0"
 
   # = Development dependencies
   #
   s.add_development_dependency "bundler",     "~> 1.0"
   s.add_development_dependency "yajl-ruby",   "~> 0.8.0"
   s.add_development_dependency "shoulda"
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "webmock", "~>1.7"
+  s.add_development_dependency "nokogiri"
+  s.add_development_dependency "vcr", "~> 2.0.0.rc1"
 
   # These gems are not needed for CI at <http://travis-ci.org/#!/karmi/tire>
   #
   unless ENV["CI"]
+    s.add_development_dependency "guard"
+    s.add_development_dependency "guard-rocco"
+    s.add_development_dependency "guard-rspec"
+    s.add_development_dependency "rb-fsevent"
+    s.add_development_dependency "fl-rocco"
+    s.add_development_dependency "redcarpet"
     s.add_development_dependency "rdoc"
     s.add_development_dependency "turn", "~> 0.9"
   end

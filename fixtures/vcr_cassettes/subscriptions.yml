@@ -1,0 +1,87 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ssl.ditonlinebetalingssystem.dk/remote/subscription.asmx
+    body: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:xsi=\"http://schemas.xmlsoap.org/soap/envelope/\"
+      xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n
+      \ <soap:Body>\n    <getsubscriptions xmlns=\"https://ssl.ditonlinebetalingssystem.dk/remote/subscription\">\n
+      \     <merchantnumber>8887978</merchantnumber>\n    </getsubscriptions>\n  </soap:Body>\n</soap:Envelope>\n"
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Soapaction:
+      - https://ssl.ditonlinebetalingssystem.dk/remote/subscription/getsubscriptions
+      Content-Length:
+      - '417'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      X-Aspnet-Version:
+      - 2.0.50727
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 13 Feb 2012 13:50:25 GMT
+      Content-Length:
+      - '12384'
+    body: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><getsubscriptionsResponse
+      xmlns="https://ssl.ditonlinebetalingssystem.dk/remote/subscription"><getsubscriptionsResult>true</getsubscriptionsResult><subscriptionAry><SubscriptionInformationType><subscriptionid>387544</subscriptionid><description>Test-subscriber</description><created>2012-02-09T12:11:00</created><expmonth>10</expmonth><expyear>12</expyear><cardtypeid>VISA</cardtypeid><transactionList><TransactionInformationType><group
+      /><authamount>10000</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>0</capturedamount><creditedamount>0</creditedamount><orderid>LOL?</orderid><description
+      /><authdate>2012-02-09T12:11:00</authdate><captureddate>0001-01-01T00:00:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_NEW</status><history><TransactionHistoryInfo><transactionHistoryID>21398635</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 100,00 and currency code 208</eventMsg><created>2012-02-09T12:11:00</created></TransactionHistoryInfo></history><transactionid>8772021</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType><TransactionInformationType><group
+      /><authamount>7900</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>7900</capturedamount><creditedamount>0</creditedamount><orderid>orderid</orderid><description
+      /><authdate>2012-02-10T11:24:00</authdate><captureddate>2012-02-10T11:24:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_EUROLINE_WAIT_CAPTURE</status><history><TransactionHistoryInfo><transactionHistoryID>21436963</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment captured with amount 79,00</eventMsg><created>2012-02-10T11:24:00</created></TransactionHistoryInfo><TransactionHistoryInfo><transactionHistoryID>21436950</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 79,00 and currency code 208</eventMsg><created>2012-02-10T11:24:00</created></TransactionHistoryInfo></history><transactionid>8786884</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType><TransactionInformationType><group
+      /><authamount>7900</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>0</capturedamount><creditedamount>0</creditedamount><orderid>orderid</orderid><description
+      /><authdate>2012-02-10T11:27:00</authdate><captureddate>0001-01-01T00:00:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_NEW</status><history><TransactionHistoryInfo><transactionHistoryID>21437077</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 79,00 and currency code 208</eventMsg><created>2012-02-10T11:27:00</created></TransactionHistoryInfo></history><transactionid>8786952</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType><TransactionInformationType><group
+      /><authamount>7900</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>0</capturedamount><creditedamount>0</creditedamount><orderid>orderid</orderid><description
+      /><authdate>2012-02-10T11:28:00</authdate><captureddate>0001-01-01T00:00:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_NEW</status><history><TransactionHistoryInfo><transactionHistoryID>21437102</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 79,00 and currency code 208</eventMsg><created>2012-02-10T11:28:00</created></TransactionHistoryInfo></history><transactionid>8786966</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType><TransactionInformationType><group
+      /><authamount>7900</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>0</capturedamount><creditedamount>0</creditedamount><orderid>orderid</orderid><description
+      /><authdate>2012-02-10T11:30:00</authdate><captureddate>0001-01-01T00:00:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_NEW</status><history><TransactionHistoryInfo><transactionHistoryID>21437164</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 79,00 and currency code 208</eventMsg><created>2012-02-10T11:30:00</created></TransactionHistoryInfo></history><transactionid>8786997</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType><TransactionInformationType><group
+      /><authamount>7900</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>7900</capturedamount><creditedamount>0</creditedamount><orderid>orderid</orderid><description
+      /><authdate>2012-02-10T11:32:00</authdate><captureddate>2012-02-10T11:32:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_EUROLINE_WAIT_CAPTURE</status><history><TransactionHistoryInfo><transactionHistoryID>21437243</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment captured with amount 79,00</eventMsg><created>2012-02-10T11:32:00</created></TransactionHistoryInfo><TransactionHistoryInfo><transactionHistoryID>21437238</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 79,00 and currency code 208</eventMsg><created>2012-02-10T11:32:00</created></TransactionHistoryInfo></history><transactionid>8787034</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType><TransactionInformationType><group
+      /><authamount>7900</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>7900</capturedamount><creditedamount>0</creditedamount><orderid>orderid</orderid><description
+      /><authdate>2012-02-10T11:32:00</authdate><captureddate>2012-02-10T11:33:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_EUROLINE_WAIT_CAPTURE</status><history><TransactionHistoryInfo><transactionHistoryID>21437268</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment captured with amount 79,00</eventMsg><created>2012-02-10T11:33:00</created></TransactionHistoryInfo><TransactionHistoryInfo><transactionHistoryID>21437266</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 79,00 and currency code 208</eventMsg><created>2012-02-10T11:32:00</created></TransactionHistoryInfo></history><transactionid>8787049</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType></transactionList></SubscriptionInformationType><SubscriptionInformationType><subscriptionid>387546</subscriptionid><description>Test-subscriber</description><created>2012-02-09T12:13:00</created><expmonth>10</expmonth><expyear>12</expyear><cardtypeid>VISA</cardtypeid><transactionList
+      /></SubscriptionInformationType><SubscriptionInformationType><subscriptionid>387555</subscriptionid><description>Test-subscriber</description><created>2012-02-09T12:21:00</created><expmonth>10</expmonth><expyear>12</expyear><cardtypeid>VISA</cardtypeid><transactionList
+      /></SubscriptionInformationType><SubscriptionInformationType><subscriptionid>387558</subscriptionid><description>Test-subscriber</description><created>2012-02-09T12:26:00</created><expmonth>10</expmonth><expyear>12</expyear><cardtypeid>VISA</cardtypeid><transactionList><TransactionInformationType><group
+      /><authamount>7900</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>7900</capturedamount><creditedamount>0</creditedamount><orderid>ND-TESTER</orderid><description
+      /><authdate>2012-02-09T15:25:00</authdate><captureddate>2012-02-10T12:05:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_EUROLINE_WAIT_CAPTURE</status><history><TransactionHistoryInfo><transactionHistoryID>21438352</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment captured with amount 79,00</eventMsg><created>2012-02-10T12:05:00</created></TransactionHistoryInfo><TransactionHistoryInfo><transactionHistoryID>21405890</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 79,00 and currency code 208</eventMsg><created>2012-02-09T15:25:00</created></TransactionHistoryInfo></history><transactionid>8775139</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType><TransactionInformationType><group
+      /><authamount>1000</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>0</capturedamount><creditedamount>0</creditedamount><orderid>hehe</orderid><description
+      /><authdate>2012-02-10T12:00:00</authdate><captureddate>0001-01-01T00:00:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_NEW</status><history><TransactionHistoryInfo><transactionHistoryID>21438147</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 10,00 and currency code 208</eventMsg><created>2012-02-10T12:00:00</created></TransactionHistoryInfo></history><transactionid>8787462</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></TransactionInformationType></transactionList></SubscriptionInformationType></subscriptionAry><epayresponse>-1</epayresponse></getsubscriptionsResponse></soap:Body></soap:Envelope>
+    http_version: !!null 
+  recorded_at: Mon, 13 Feb 2012 13:51:28 GMT
+recorded_with: VCR 2.0.0.rc1

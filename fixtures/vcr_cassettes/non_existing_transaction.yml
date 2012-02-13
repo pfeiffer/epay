@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ssl.ditonlinebetalingssystem.dk/remote/payment.asmx
+    body: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:xsi=\"http://schemas.xmlsoap.org/soap/envelope/\"
+      xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n
+      \ <soap:Body>\n    <gettransaction xmlns=\"https://ssl.ditonlinebetalingssystem.dk/remote/payment\">\n
+      \     <transactionid>12345678</transactionid>\n      <merchantnumber>8887978</merchantnumber>\n
+      \   </gettransaction>\n  </soap:Body>\n</soap:Envelope>\n"
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Soapaction:
+      - https://ssl.ditonlinebetalingssystem.dk/remote/payment/gettransaction
+      Content-Length:
+      - '454'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      X-Aspnet-Version:
+      - 2.0.50727
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 13 Feb 2012 12:40:47 GMT
+      Content-Length:
+      - '1123'
+    body: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><gettransactionResponse
+      xmlns="https://ssl.ditonlinebetalingssystem.dk/remote/payment"><gettransactionResult>false</gettransactionResult><transactionInformation><authamount>0</authamount><currency>0</currency><cardtypeid>0</cardtypeid><capturedamount>0</capturedamount><creditedamount>0</creditedamount><authdate>0001-01-01T00:00:00</authdate><captureddate>0001-01-01T00:00:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_UNDEFINED</status><transactionid>0</transactionid><mode>MODE_PRODUCTION</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode
+      /><issuedCountryCode /><fee>0</fee><splitpayment>false</splitpayment><acquirer>UNKNOWN</acquirer><tcardno
+      /><expmonth>-1</expmonth><expyear>-1</expyear></transactionInformation><epayresponse>-1008</epayresponse></gettransactionResponse></soap:Body></soap:Envelope>
+    http_version: !!null 
+  recorded_at: Mon, 13 Feb 2012 12:41:50 GMT
+recorded_with: VCR 2.0.0.rc1

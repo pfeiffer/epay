@@ -15,5 +15,9 @@ module Epay
     def hash
       [number, exp_year, exp_month].join("") if number.present?
     end
+    
+    def last_digits
+      number[-4, 4] if number.present?
+    end
   end
 end

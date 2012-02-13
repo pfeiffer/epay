@@ -3,7 +3,7 @@ module Epay
     include Model
     
     def self.inspectable_attributes
-      %w(id created_at description group)
+      %w(id created_at description)
     end
     
     def created_at
@@ -25,10 +25,6 @@ module Epay
     
     def description
       data['description']
-    end
-    
-    def group
-      data['group']
     end
     
     def transactions
@@ -62,7 +58,7 @@ module Epay
         if response.success?
           Transaction.find(response.data['transactionid'])
         else
-          Transaction.new(response.data['transactionid'], {'ErrorCode' => response.data['pbsresponse']})
+          Transaction.new(nil, {'ErrorCode' => response.data['pbsresponse']})
         end
       end
     end

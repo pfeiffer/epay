@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ssl.ditonlinebetalingssystem.dk/remote/subscription.asmx
+    body: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:xsi=\"http://schemas.xmlsoap.org/soap/envelope/\"
+      xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n
+      \ <soap:Body>\n    <authorize xmlns=\"https://ssl.ditonlinebetalingssystem.dk/remote/subscription\">\n
+      \     <merchantnumber>8887978</merchantnumber>\n      <amount>1000</amount>\n
+      \     <currency>208</currency>\n      <orderid>NEW ORDER</orderid>\n      <accepturl>https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?accept=1</accepturl>\n
+      \     <declineurl>https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?decline=1</declineurl>\n
+      \     <subscriptionid>387544</subscriptionid>\n    </authorize>\n  </soap:Body>\n</soap:Envelope>\n"
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Soapaction:
+      - https://ssl.ditonlinebetalingssystem.dk/remote/subscription/authorize
+      Content-Length:
+      - '738'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      X-Aspnet-Version:
+      - 2.0.50727
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 13 Feb 2012 14:01:22 GMT
+      Content-Length:
+      - '505'
+    body: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><authorizeResponse
+      xmlns="https://ssl.ditonlinebetalingssystem.dk/remote/subscription"><authorizeResult>true</authorizeResult><fraud>0</fraud><transactionid>8827462</transactionid><pbsresponse>0</pbsresponse><epayresponse>-1</epayresponse></authorizeResponse></soap:Body></soap:Envelope>
+    http_version: !!null 
+  recorded_at: Mon, 13 Feb 2012 14:02:25 GMT
+- request:
+    method: post
+    uri: https://ssl.ditonlinebetalingssystem.dk/remote/payment.asmx
+    body: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:xsi=\"http://schemas.xmlsoap.org/soap/envelope/\"
+      xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n
+      \ <soap:Body>\n    <gettransaction xmlns=\"https://ssl.ditonlinebetalingssystem.dk/remote/payment\">\n
+      \     <transactionid>8827462</transactionid>\n      <merchantnumber>8887978</merchantnumber>\n
+      \   </gettransaction>\n  </soap:Body>\n</soap:Envelope>\n"
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Soapaction:
+      - https://ssl.ditonlinebetalingssystem.dk/remote/payment/gettransaction
+      Content-Length:
+      - '453'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      X-Aspnet-Version:
+      - 2.0.50727
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Mon, 13 Feb 2012 14:01:23 GMT
+      Content-Length:
+      - '1520'
+    body: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><gettransactionResponse
+      xmlns="https://ssl.ditonlinebetalingssystem.dk/remote/payment"><gettransactionResult>true</gettransactionResult><transactionInformation><group
+      /><authamount>1000</authamount><currency>208</currency><cardtypeid>18</cardtypeid><capturedamount>0</capturedamount><creditedamount>0</creditedamount><orderid>NEW
+      ORDER</orderid><description /><authdate>2012-02-13T15:01:00</authdate><captureddate>0001-01-01T00:00:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_NEW</status><history><TransactionHistoryInfo><transactionHistoryID>21531271</transactionHistoryID><logonID>-1</logonID><username
+      /><eventMsg>Payment authorized with amount 10,00 and currency code 208</eventMsg><created>2012-02-13T15:01:00</created></TransactionHistoryInfo></history><transactionid>8827462</transactionid><cardholder
+      /><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>333333XXXXXX3000</tcardno><expmonth>10</expmonth><expyear>12</expyear></transactionInformation><epayresponse>-1</epayresponse></gettransactionResponse></soap:Body></soap:Envelope>
+    http_version: !!null 
+  recorded_at: Mon, 13 Feb 2012 14:02:26 GMT
+recorded_with: VCR 2.0.0.rc1

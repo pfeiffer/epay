@@ -72,8 +72,6 @@ module Epay
           end
         end
         
-        puts "Making request: #{soap_action} with: #{params.to_json}"
-        
         RestClient.post service_url, xml.target!, headers do |raw_response|
           response = Response.new(raw_response, action)
           

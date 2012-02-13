@@ -1,5 +1,6 @@
 require 'rest_client'
 require 'active_support/core_ext'
+require 'builder'
 
 require 'epay/api'
 require 'epay/api/response'

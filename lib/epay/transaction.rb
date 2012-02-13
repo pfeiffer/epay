@@ -73,7 +73,7 @@ module Epay
     end
     
     def test?
-      data['mode'] == 'MODE_EPAY'
+      data['mode'] == 'MODE_EPAY' || data['mode'] == 'MODE_TEST'
     end
     
     def production?
@@ -83,7 +83,6 @@ module Epay
     # Actions
     def reload
       response = Epay::Api.request(PAYMENT_SOAP_URL, 'gettransaction', :transactionid => id)
-      puts response.data
       @data = response.data['transactionInformation']
       self
     end
@@ -138,13 +137,10 @@ module Epay
         query = Api.authorize(post)
         
         if query['accept']
-          puts query
           # Find the transaction
-          #query["tcardno"]
           transaction = Transaction.find(query["tid"].to_i)
         else
           # Return a new transaction with error code filled
-          puts query
           new(nil, {
             'failed'      => true,
             'error'       => query["error"],
