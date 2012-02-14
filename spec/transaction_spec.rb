@@ -50,6 +50,10 @@ module Epay
         transaction.data.stub(:[]).with('error') { 404 }
         transaction.error.should == 404
       end
+      
+      it "has credited_amount" do
+        transaction.credited_amount == 3
+      end
     end
     
     describe "#test?" do
@@ -128,6 +132,25 @@ module Epay
           transaction
           Epay::Api.stub(:request) { mock('response', :success? => false) }
           transaction.capture.should be_false
+        end
+      end
+    end
+    
+    describe "#credit" do
+      context "if amount to be credited is given" do
+        it "credits the amount" do
+          transaction_id = transaction.id
+          Api.should_receive(:request).with(PAYMENT_SOAP_URL, 'credit', :transactionid => transaction_id, :amount => 1000).and_return(mock('response', :success => true))
+          transaction.credit(10)
+        end
+      end
+      
+      context "with no amount given" do
+        it "credits full authorization amount" do
+          transaction.stub(:credited_amount) { 10 }
+          transaction.stub(:amount) { 60 }
+          Api.should_receive(:request).with(PAYMENT_SOAP_URL, 'credit', :transactionid => transaction.id, :amount => 5000).and_return(mock('response', :success => true))
+          transaction.credit
         end
       end
     end

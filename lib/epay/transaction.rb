@@ -44,6 +44,10 @@ module Epay
       @card ||= Card.new(:kind => CARD_KINDS[data['cardtypeid'].to_i], :number => data['tcardno'], :exp_year => data['expyear'].to_i, :exp_month => data['expmonth'].to_i)
     end
     
+    def credited_amount
+      data['creditedamount'].to_f / 100
+    end
+    
     def captured_amount
       data['capturedamount'].to_f / 100
     end
@@ -97,21 +101,22 @@ module Epay
       end
     end
     
-    def credit(amount)
-      Epay::Api.request(PAYMENT_SOAP_URL, 'credit', :transactionid => id, :amount => amount * 100 ) do |response|
-        unless response.success?
-          raise TransactionInGracePeriod if response.data['epayresponse'] == "-1021"
-          false
-        else
+    def credit(amount_to_be_credited = nil)
+      amount_to_be_credited ||= amount - credited_amount
+      
+      Epay::Api.request(PAYMENT_SOAP_URL, 'credit', :transactionid => id, :amount => amount_to_be_credited * 100) do |response|
+        if response.success?
           true
+        else
+          raise TransactionInGracePeriod if response.data['epayresponse'] == "-1021"
+          
+          false
         end
       end
     end
     
     def delete
-      Epay::Api.request(PAYMENT_SOAP_URL, 'delete', :transactionid => id) do |response|
-        response.success?
-      end
+      Epay::Api.request(PAYMENT_SOAP_URL, 'delete', :transactionid => id).success?
     end
     
     # ClassMethods
