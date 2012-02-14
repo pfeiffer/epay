@@ -108,23 +108,16 @@ module Epay
     end
     
     describe "#capture" do
-      #before do
-      #  Api.stub(:request).with(PAYMENT_SOAP_URL, 'capture', :transactionid => transaction.id, :amount => anything) do
-      #    mock(Api::Response, :success? => true)
-      #  end
-      #  transaction.stub(:reload)
-      #end
-      
       it "calls capture action with transaction id and amount in minor" do
-        pending
         transaction.stub(:amount) { 10 }
-        Api.should_receive(:request).with(PAYMENT_SOAP_URL, 'capture', :transactionid => transaction.id, :amount => 1000)        
+        Api.should_receive(:request).with(PAYMENT_SOAP_URL, 'capture', :transactionid => transaction.id, :amount => 1000).and_return(mock('response', :success? => false))
         transaction.capture
       end
       
       context "when request is success" do
         it "reloads and returns true" do
-          pending
+          transaction
+          Api.stub(:request).with(PAYMENT_SOAP_URL, 'capture', anything).and_return(mock('response', :success? => true))
           transaction.should_receive(:reload)
           transaction.capture.should be_true
         end
@@ -132,8 +125,8 @@ module Epay
       
       context "when request fails" do
         it "returns false" do
-          pending
-          Epay::Api.stub(:request) { mock(Api::Response, :success? => false) }
+          transaction
+          Epay::Api.stub(:request) { mock('response', :success? => false) }
           transaction.capture.should be_false
         end
       end
