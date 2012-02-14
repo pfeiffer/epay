@@ -49,7 +49,7 @@ module Epay
         soap_action = url + '/' + action
         
         params[:merchantnumber] ||= Epay.merchant_number
-        #params[:pwd] = Epay.password if Epay.password.present?
+        params[:pwd] = Epay.password if Epay.password.present?
 
         headers = {
           'Content-Type'  => 'text/xml; charset=utf-8',

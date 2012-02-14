@@ -26,12 +26,25 @@ module Epay
         end
         
         context "body" do
-          before do
-            @parsed_body = Nokogiri::XML(@body)
+          def body_to_xml(body)
+            Nokogiri::XML(body).remove_namespaces!
           end
           
           it "has merchant number" do
-            pending
+            body_to_xml(@body).xpath('//merchantnumber/child::text()').to_s.should == Epay.merchant_number.to_s
+          end
+          
+          it "is adds parameters" do
+            xml = body_to_xml(@body)
+            xml.xpath('//Envelope/Body/gettransaction/transactionid/child::text()').to_s.should == "42"
+          end
+          
+          context "if password is set" do
+            it "adds pwd field" do
+              Epay.password = 'password_for_api'
+              Api.request('https://ssl.ditonlinebetalingssystem.dk/remote/payment', 'gettransaction', :transactionid => 42)
+              body_to_xml(@body).xpath('//pwd/child::text()').to_s.should == 'password_for_api'
+            end
           end
         end
       end
