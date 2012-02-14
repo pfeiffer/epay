@@ -155,6 +155,56 @@ module Epay
       end
     end
     
+    describe ".create" do
+      context "with valid card data" do
+        it "returns transaction" do
+          VCR.use_cassette('transaction_creation') do
+            transaction = Transaction.create(
+              :card_no => '5555555555555000',
+              :exp_year => '15',
+              :exp_month => '10',
+              :cvc => '999',
+              :description => 'For the cool products',
+              :currency => :DKK,
+              :amount => 60,
+              :group => 'Test-transactions',
+              :cardholder => 'Jack Jensen',
+              :order_no => 'TEST-ORDER-12345'
+            )
+            
+            transaction.should be_a Transaction
+            transaction.success?.should be_true
+            transaction.amount.should == 60
+            transaction.cardholder.should == 'Jack Jensen'
+          end
+        end
+      end
+      
+      context "with invalid card data" do
+        it "returns failed transaction" do
+          VCR.use_cassette('transaction_invalid_creation') do
+            transaction = Transaction.create(
+              :card_no => '5555555555555118',
+              :exp_year => '15',
+              :exp_month => '10',
+              :cvc => '999',
+              :description => 'For the cool products',
+              :currency => :DKK,
+              :amount => 60,
+              :group => 'Test-transactions',
+              :cardholder => 'Jack Jensen',
+              :order_no => 'TEST-ORDER-12345'
+            )
+            
+            transaction.should be_a Transaction
+            transaction.success?.should be_false
+            transaction.amount.should == 60
+            transaction.cardholder.should == 'Jack Jensen'
+          end
+        end
+      end
+    end
+    
     describe ".find" do
       it "returns a transaction" do
         VCR.use_cassette('existing_transaction') do

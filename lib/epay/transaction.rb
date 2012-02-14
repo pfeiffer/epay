@@ -126,7 +126,7 @@ module Epay
         transaction.reload
       end
       
-      # Epay::Transaction.create(:card_no => '12345', :cvc => '123', :exp_month => '11', :exp_year => '12', :amount => '119', :order_no => 'ND-TEST')
+      # Epay::Transaction.create(:card_no => '1234...', :cvc => '123', :exp_month => '11', :exp_year => '12', :amount => '119', :order_no => 'ND-TEST')
       
       def create(params)
         post = Api.default_post_for_params(params).merge({

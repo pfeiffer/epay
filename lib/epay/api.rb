@@ -53,7 +53,8 @@ module Epay
 
         headers = {
           'Content-Type'  => 'text/xml; charset=utf-8',
-          'SOAPAction'    => soap_action
+          'SOAPAction'    => soap_action,
+          'User-Agent'    => "Ruby / epay (#{VERSION})"
         }
 
         # Setup the SOAP body:

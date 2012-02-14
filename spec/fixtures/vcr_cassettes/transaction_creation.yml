@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx
+    body: merchantnumber=8887978&cardno=5555555555555000&cvc=999&expmonth=10&expyear=15&amount=6000&currency=208&orderid=TEST-ORDER-12345&accepturl=https%3A%2F%2Fssl.ditonlinebetalingssystem.dk%2Fauth%2Fdefault.aspx%3Faccept%3D1&declineurl=https%3A%2F%2Fssl.ditonlinebetalingssystem.dk%2Fauth%2Fdefault.aspx%3Fdecline%3D1&description=For%20the%20cool%20products&cardholder=Jack%20Jensen&group=Test-transactions&instantcapture=0
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Length:
+      - '417'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 302
+      message: Found
+    headers:
+      Cache-Control:
+      - private
+      Content-Type:
+      - text/html; charset=iso-8859-1
+      Location:
+      - https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?accept=1&tid=8840215&orderid=TEST-ORDER-12345&amount=6000&cur=208&date=20120214&time=1147&cardnopostfix=5000&tcardno=555555XXXXXX5000&cardid=4&transfee=0
+      Set-Cookie:
+      - ASP.NET_SessionId=ttcv4fb3oby30sayyisibj55; path=/; HttpOnly
+      X-Aspnet-Version:
+      - 2.0.50727
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 14 Feb 2012 10:46:46 GMT
+      Content-Length:
+      - '368'
+    body: ! "<html><head><title>Object moved</title></head><body>\r\n<h2>Object moved
+      to <a href=\"https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?accept=1&amp;tid=8840215&amp;orderid=TEST-ORDER-12345&amp;amount=6000&amp;cur=208&amp;date=20120214&amp;time=1147&amp;cardnopostfix=5000&amp;tcardno=555555XXXXXX5000&amp;cardid=4&amp;transfee=0\">here</a>.</h2>\r\n</body></html>\r\n"
+    http_version: !!null 
+  recorded_at: Tue, 14 Feb 2012 10:47:50 GMT
+- request:
+    method: post
+    uri: https://ssl.ditonlinebetalingssystem.dk/remote/payment.asmx
+    body: ! "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soap:Envelope xmlns:xsi=\"http://schemas.xmlsoap.org/soap/envelope/\"
+      xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n
+      \ <soap:Body>\n    <gettransaction xmlns=\"https://ssl.ditonlinebetalingssystem.dk/remote/payment\">\n
+      \     <transactionid>8840215</transactionid>\n      <merchantnumber>8887978</merchantnumber>\n
+      \   </gettransaction>\n  </soap:Body>\n</soap:Envelope>\n"
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - text/xml; charset=utf-8
+      Soapaction:
+      - https://ssl.ditonlinebetalingssystem.dk/remote/payment/gettransaction
+      Content-Length:
+      - '453'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private, max-age=0
+      Content-Type:
+      - text/xml; charset=utf-8
+      X-Aspnet-Version:
+      - 2.0.50727
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 14 Feb 2012 10:46:46 GMT
+      Content-Length:
+      - '1836'
+    body: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><gettransactionResponse
+      xmlns="https://ssl.ditonlinebetalingssystem.dk/remote/payment"><gettransactionResult>true</gettransactionResult><transactionInformation><group>Test-transactions</group><authamount>6000</authamount><currency>208</currency><cardtypeid>4</cardtypeid><capturedamount>0</capturedamount><creditedamount>0</creditedamount><orderid>TEST-ORDER-12345</orderid><description>For
+      the cool products</description><authdate>2012-02-14T11:47:00</authdate><captureddate>0001-01-01T00:00:00</captureddate><deleteddate>0001-01-01T00:00:00</deleteddate><crediteddate>0001-01-01T00:00:00</crediteddate><status>PAYMENT_NEW</status><history><TransactionHistoryInfo><transactionHistoryID>21568611</transactionHistoryID><logonID>0</logonID><username
+      /><eventMsg>Payment moved to group Test-transactions</eventMsg><created>2012-02-14T11:47:00</created></TransactionHistoryInfo><TransactionHistoryInfo><transactionHistoryID>21568610</transactionHistoryID><logonID>0</logonID><username
+      /><eventMsg>Payment authorized with amount 60,00 and currency code 208</eventMsg><created>2012-02-14T11:47:00</created></TransactionHistoryInfo></history><transactionid>8840215</transactionid><cardholder>Jack
+      Jensen</cardholder><mode>MODE_EPAY</mode><msc>false</msc><fraudStatus>0</fraudStatus><payerCountryCode>  </payerCountryCode><issuedCountryCode>  </issuedCountryCode><fee>0</fee><splitpayment>false</splitpayment><acquirer>EUROLINE</acquirer><tcardno>555555XXXXXX5000</tcardno><expmonth>10</expmonth><expyear>15</expyear></transactionInformation><epayresponse>-1</epayresponse></gettransactionResponse></soap:Body></soap:Envelope>
+    http_version: !!null 
+  recorded_at: Tue, 14 Feb 2012 10:47:50 GMT
+recorded_with: VCR 2.0.0.rc1
