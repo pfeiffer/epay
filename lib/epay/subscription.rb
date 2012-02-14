@@ -23,6 +23,14 @@ module Epay
       end
     end
     
+    def error
+      data['error']
+    end
+    
+    def valid?
+      data['error'].nil?
+    end
+    
     def description
       data['description']
     end
@@ -91,7 +99,7 @@ module Epay
           # Return the new subscriber
           new(query["subscriptionid"].to_i)
         else
-          false
+          new(nil, 'error' => query["error"])
         end
       end
       

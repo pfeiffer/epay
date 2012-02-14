@@ -79,10 +79,19 @@ module Epay
       end
       
       context "when card data is invalid" do
-        it "returns false" do
-          VCR.use_cassette('subscription_invalid_creation') do
-            subscription = Subscription.create(:card_no => '5555555555555118', :exp_year => '15', :exp_month => '10', :cvc => '999', :description => 'A new subscriber', :currency => :DKK)
-            subscription.should be_false
+        describe "the returned subscription" do
+          let(:subscription) do
+            VCR.use_cassette('subscription_invalid_creation') do
+              Subscription.create(:card_no => '5555555555555118', :exp_year => '15', :exp_month => '10', :cvc => '999', :description => 'A new subscriber', :currency => :DKK)
+            end
+          end
+          
+          it "has error code" do
+            subscription.error.should == '118'
+          end
+          
+          it "is isn't valid" do
+            subscription.should_not be_valid
           end
         end
       end
