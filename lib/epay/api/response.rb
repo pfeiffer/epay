@@ -9,11 +9,11 @@ module Epay
       end
       
       def success?
-        raw_response.code == 200 && data["#{action}Result"] == "true"
+        code == 200 && data["#{action}Result"] == "true"
       end
       
       def data
-        if headers[:content_type] =~ %r(text/xml) && raw_response.code == 200
+        if headers[:content_type] =~ %r(text/xml) && code == 200
           # Remove envelope and XML namespace objects
           Hash.from_xml(raw_response.to_s).first.last["Body"]["#{action}Response"].reject { |k,v| k.match(/xmlns/) }
         else
