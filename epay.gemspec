@@ -42,11 +42,8 @@ Gem::Specification.new do |s|
   #
   unless ENV["CI"]
     s.add_development_dependency "guard"
-    s.add_development_dependency "guard-rocco"
     s.add_development_dependency "guard-rspec"
     s.add_development_dependency "rb-fsevent"
-    s.add_development_dependency "fl-rocco"
-    s.add_development_dependency "redcarpet"
     s.add_development_dependency "rdoc"
     s.add_development_dependency "turn", "~> 0.9"
   end
