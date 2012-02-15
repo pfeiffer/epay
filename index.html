@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>index.rb</title>
+  <link rel="stylesheet" href="http://jashkenas.github.com/docco/resources/docco.css">
+</head>
+<body>
+<div id='container'>
+  <div id="background"></div>
+  <table cellspacing=0 cellpadding=0>
+  <thead>
+    <tr>
+      <th class=docs><h1>index.rb</h1></th>
+      <th class=code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr id='section-ePay'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-ePay">&#182;</a>
+        </div>
+        <h1>ePay</h1>
+
+<p>The <code>epay</code> gem gives you a convenient wrapper for the ePay payment gateway.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-Installation'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Installation">&#182;</a>
+        </div>
+        <h2>Installation</h2>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-3'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-3">&#182;</a>
+        </div>
+        <p>Just install the gem:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="n">gem</span> <span class="n">install</span> <span class="n">epay</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-4'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-4">&#182;</a>
+        </div>
+        <p>or add to your Gemfile:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="n">gem</span> <span class="s1">&#39;epay&#39;</span> </pre></div>
+      </td>
+    </tr>
+    <tr id='section-Setup'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Setup">&#182;</a>
+        </div>
+        <h2>Setup</h2>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-6'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-6">&#182;</a>
+        </div>
+        <p>Require the epay gem in your code and set your merchant number:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="nb">require</span> <span class="s1">&#39;epay&#39;</span>
+<span class="no">Epay</span><span class="o">.</span><span class="n">merchant_number</span> <span class="o">=</span> <span class="mi">88776655</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-7'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-7">&#182;</a>
+        </div>
+        <p>If you&rsquo;ve entered an API password in the ePay administration interface, set it as well:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="no">Epay</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;my_pass&#39;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-8'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-8">&#182;</a>
+        </div>
+        <p>If can set a default currency to avoid having to explicitly pass <code>:currency</code> argument on each authorization:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="no">Epay</span><span class="o">.</span><span class="n">default_currency</span> <span class="o">=</span> <span class="ss">:DKK</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-Transactions'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Transactions">&#182;</a>
+        </div>
+        <h2>Transactions</h2>
+
+<p>The gem gives you access to the <code>Transaction</code> model, which you can use to create and manipulate transactions.</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-Authorize_a_new_transaction_using_card_data'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Authorize_a_new_transaction_using_card_data">&#182;</a>
+        </div>
+        <h3>Authorize a new transaction using card data</h3>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-11'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-11">&#182;</a>
+        </div>
+        <p>Use <code>.create</code> to authorize a new transaction:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="vi">@transaction</span> <span class="o">=</span> <span class="no">Epay</span><span class="o">::</span><span class="no">Transaction</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+  <span class="ss">:card_no</span> <span class="o">=&gt;</span> <span class="s1">&#39;3330333333333000&#39;</span><span class="p">,</span>
+  <span class="ss">:exp_year</span> <span class="o">=&gt;</span> <span class="mi">14</span><span class="p">,</span>
+  <span class="ss">:exp_month</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="ss">:cvc</span> <span class="o">=&gt;</span> <span class="s1">&#39;999&#39;</span><span class="p">,</span>
+  <span class="ss">:amount</span> <span class="o">=&gt;</span> <span class="mi">150</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span>
+  <span class="ss">:order_no</span> <span class="o">=&gt;</span> <span class="s1">&#39;AWESOME-INC-12346&#39;</span><span class="p">,</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-12'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-12">&#182;</a>
+        </div>
+        <p>Optional parameters :</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre>  <span class="ss">:description</span> <span class="o">=&gt;</span> <span class="s1">&#39;My awesome transaction&#39;</span><span class="p">,</span>
+  <span class="ss">:group</span> <span class="o">=&gt;</span> <span class="s1">&#39;Awesome transactions&#39;</span><span class="p">,</span>
+  <span class="ss">:cardholder</span> <span class="o">=&gt;</span> <span class="s1">&#39;Jack Doe&#39;</span>
+<span class="p">)</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Epay::Transaction id: 1234, ...&gt;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-13'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-13">&#182;</a>
+        </div>
+        <p>The transaction object gives you various details about the transaction:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="vi">@transaction</span><span class="o">.</span><span class="n">success?</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+
+<span class="vi">@transaction</span><span class="o">.</span><span class="n">amount</span>
+<span class="o">=&gt;</span> <span class="mi">150</span><span class="o">.</span><span class="mi">0</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-Find_transaction'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Find_transaction">&#182;</a>
+        </div>
+        <h3>Find transaction</h3>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-15'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-15">&#182;</a>
+        </div>
+        <p>Use <code>.find</code> to look up a specific transaction:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="vi">@transaction</span> <span class="o">=</span> <span class="no">Epay</span><span class="o">::</span><span class="no">Transaction</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="mi">1234567</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="c1">#&lt;Epay::Transaction id: 1234567, ...&gt;</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-Capture_a_transaction'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Capture_a_transaction">&#182;</a>
+        </div>
+        <h3>Capture a transaction</h3>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-17'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-17">&#182;</a>
+        </div>
+        <p>Just call <code>capture</code> on the transaction:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="vi">@transaction</span><span class="o">.</span><span class="n">capture</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+
+<span class="vi">@transaction</span><span class="o">.</span><span class="n">captured?</span>
+<span class="o">=&gt;</span> <span class="kp">true</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-Delete_transaction'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Delete_transaction">&#182;</a>
+        </div>
+        <h3>Delete transaction</h3>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-19'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-19">&#182;</a>
+        </div>
+        <p>Use <code>delete</code> to delete a transaction:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="vi">@transaction</span><span class="o">.</span><span class="n">delete</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+
+<span class="vi">@transaction</span><span class="o">.</span><span class="n">deleted?</span>
+<span class="o">=&gt;</span> <span class="kp">true</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-Credit_a_transaction'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-Credit_a_transaction">&#182;</a>
+        </div>
+        <h3>Credit a transaction</h3>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre></pre></div>
+      </td>
+    </tr>
+    <tr id='section-21'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-21">&#182;</a>
+        </div>
+        <p>Use <code>credit</code> to credit a captured transaction. If no amount if given the full transaction amount is credited:</p>
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="vi">@transaction</span><span class="o">.</span><span class="n">credit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+
+<span class="vi">@transaction</span><span class="o">.</span><span class="n">credited_amount</span>
+<span class="o">=&gt;</span> <span class="mi">10</span><span class="o">.</span><span class="mi">0</span></pre></div>
+      </td>
+    </tr>
+    <tr id='section-22'>
+      <td class=docs>
+        <div class="pilwrap">
+          <a class="pilcrow" href="#section-22">&#182;</a>
+        </div>
+        <p>Credit the remaining part of transaction:</p>
+
+      </td>
+      <td class=code>
+        <div class='highlight'><pre><span class="vi">@transaction</span><span class="o">.</span><span class="n">credit</span>
+<span class="o">=&gt;</span> <span class="kp">true</span></pre></div>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
