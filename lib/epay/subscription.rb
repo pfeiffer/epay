@@ -42,7 +42,7 @@ module Epay
       return [] unless data['transactionList'].present?
       
       # transactionList can be a hash or an array
-      Array(data['transactionList']['TransactionInformationType']).map do |transaction_data|
+      Array.wrap(data['transactionList']['TransactionInformationType']).collect do |transaction_data|
         Transaction.new(transaction_data['transactionid'].to_i, transaction_data)
       end
     end

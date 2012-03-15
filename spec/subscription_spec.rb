@@ -20,7 +20,6 @@ module Epay
     
     describe "#transactions" do
       it "returns a list of transactions" do
-        subscription.transactions.should be_a Enumerable
         subscription.transactions.first.should be_a Transaction
       end
       
@@ -28,6 +27,13 @@ module Epay
         it "returns an empty list" do
           subscription.data.delete('transactionList')
           subscription.transactions.should == []
+        end
+      end
+      
+      context "when one transaction has been made" do
+        it "returns list of transactions" do
+          subscription.data['transactionList'] = {"TransactionInformationType"=>{"group"=>nil, "authamount"=>"59000", "currency"=>"208", "cardtypeid"=>"4", "capturedamount"=>"0", "creditedamount"=>"0", "orderid"=>"__dev__-1-10000", "description"=>nil, "authdate"=>"2012-03-12T19:56:00", "captureddate"=>"0001-01-01T00:00:00", "deleteddate"=>"0001-01-01T00:00:00", "crediteddate"=>"0001-01-01T00:00:00", "status"=>"PAYMENT_NEW", "history"=>{"TransactionHistoryInfo"=>{"transactionHistoryID"=>"22572373", "logonID"=>"-1", "username"=>nil, "eventMsg"=>"Payment authorized with amount 590,00 and currency code 208", "created"=>"2012-03-12T19:56:00"}}, "transactionid"=>"9239756", "cardholder"=>nil, "mode"=>"MODE_EPAY", "msc"=>"false", "fraudStatus"=>"0", "payerCountryCode"=>"  ", "issuedCountryCode"=>"  ", "fee"=>"0", "splitpayment"=>"false", "acquirer"=>"EUROLINE", "tcardno"=>"555555XXXXXX5000", "expmonth"=>"1", "expyear"=>"12"}}
+          subscription.transactions.first.should be_a Transaction
         end
       end
     end
