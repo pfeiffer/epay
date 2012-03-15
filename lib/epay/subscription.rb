@@ -98,7 +98,7 @@ module Epay
         
         if query['accept']
           # Return the new subscriber
-          new(query["subscriptionid"].to_i, 'card_no' => params[:card_no].gsub(/^(\d{6})\d{6}(\d{4})/, "\\1XXXXXX\\2"))
+          new(query["subscriptionid"].to_i, 'card_no' => params[:card_no].gsub(/^(\d{6})\d{6}(\d{4})/, "\\1XXXXXX\\2")).reload
         else
           new(nil, 'error' => query["error"])
         end
