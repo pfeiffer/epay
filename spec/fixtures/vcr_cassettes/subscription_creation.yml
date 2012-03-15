@@ -1,43 +1,101 @@
----
-http_interactions:
-- request:
+--- 
+http_interactions: 
+- request: 
     method: post
     uri: https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx
-    body: merchantnumber=8887978&cardno=5555555555555000&cvc=999&expmonth=10&expyear=15&amount=0&currency=208&orderid=13291431375659&accepturl=https%3A%2F%2Fssl.ditonlinebetalingssystem.dk%2Fauth%2Fdefault.aspx%3Faccept%3D1&declineurl=https%3A%2F%2Fssl.ditonlinebetalingssystem.dk%2Fauth%2Fdefault.aspx%3Fdecline%3D1&subscription=1&subscriptionname=A%20new%20subscriber
-    headers:
-      Accept:
-      - ! '*/*; q=0.5, application/xml'
-      Accept-Encoding:
+    body: 
+      encoding: ASCII-8BIT
+      string: merchantnumber=8887978&cardno=5555555555555000&cvc=999&expmonth=10&expyear=15&amount=0&currency=208&orderid=13318153116230&accepturl=https%3A%2F%2Fssl.ditonlinebetalingssystem.dk%2Fauth%2Fdefault.aspx%3Faccept%3D1&declineurl=https%3A%2F%2Fssl.ditonlinebetalingssystem.dk%2Fauth%2Fdefault.aspx%3Fdecline%3D1&subscription=1&subscriptionname=A%20new%20subscriber
+    headers: 
+      Accept: 
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding: 
       - gzip, deflate
-      Content-Length:
-      - '359'
-      Content-Type:
+      Content-Length: 
+      - "359"
+      Content-Type: 
       - application/x-www-form-urlencoded
-      User-Agent:
+      User-Agent: 
       - Ruby
-  response:
-    status:
+  response: 
+    status: 
       code: 302
       message: Found
-    headers:
-      Cache-Control:
+    headers: 
+      Cache-Control: 
       - private
-      Content-Type:
+      Content-Type: 
       - text/html; charset=iso-8859-1
-      Location:
-      - https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?accept=1&tid=0&orderid=13291431375659&amount=0&cur=208&date=20120213&time=1524&cardnopostfix=5000&tcardno=555555XXXXXX5000&subscriptionid=390428&cardid=4&transfee=0
-      Set-Cookie:
-      - ASP.NET_SessionId=2ryeid45txtm0ffwibbkxnqm; path=/; HttpOnly
-      X-Aspnet-Version:
+      Location: 
+      - https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?accept=1&tid=0&orderid=13318153116230&amount=0&cur=208&date=20120315&time=1341&cardnopostfix=5000&tcardno=555555XXXXXX5000&subscriptionid=418486&cardid=4&transfee=0
+      Set-Cookie: 
+      - ASP.NET_SessionId=mwyld245nhtkxc55lzlczjfb; path=/; HttpOnly
+      X-Aspnet-Version: 
       - 2.0.50727
-      X-Powered-By:
+      X-Powered-By: 
       - ASP.NET
-      Date:
-      - Mon, 13 Feb 2012 14:24:35 GMT
-      Content-Length:
-      - '383'
-    body: ! "<html><head><title>Object moved</title></head><body>\r\n<h2>Object moved
-      to <a href=\"https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?accept=1&amp;tid=0&amp;orderid=13291431375659&amp;amount=0&amp;cur=208&amp;date=20120213&amp;time=1524&amp;cardnopostfix=5000&amp;tcardno=555555XXXXXX5000&amp;subscriptionid=390428&amp;cardid=4&amp;transfee=0\">here</a>.</h2>\r\n</body></html>\r\n"
-    http_version: !!null 
-  recorded_at: Mon, 13 Feb 2012 14:25:38 GMT
-recorded_with: VCR 2.0.0.rc1
+      Date: 
+      - Thu, 15 Mar 2012 12:41:51 GMT
+      Content-Length: 
+      - "383"
+    body: 
+      encoding: US-ASCII
+      string: |
+        <html><head><title>Object moved</title></head><body>
+        <h2>Object moved to <a href="https://ssl.ditonlinebetalingssystem.dk/auth/default.aspx?accept=1&amp;tid=0&amp;orderid=13318153116230&amp;amount=0&amp;cur=208&amp;date=20120315&amp;time=1341&amp;cardnopostfix=5000&amp;tcardno=555555XXXXXX5000&amp;subscriptionid=418486&amp;cardid=4&amp;transfee=0">here</a>.</h2>
+        </body></html>
+
+    http_version: 
+  recorded_at: Thu, 15 Mar 2012 12:41:51 GMT
+- request: 
+    method: post
+    uri: https://ssl.ditonlinebetalingssystem.dk/remote/subscription.asmx
+    body: 
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <soap:Envelope xmlns:xsi="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+          <soap:Body>
+            <getsubscriptions xmlns="https://ssl.ditonlinebetalingssystem.dk/remote/subscription">
+              <subscriptionid>418486</subscriptionid>
+              <merchantnumber>8887978</merchantnumber>
+            </getsubscriptions>
+          </soap:Body>
+        </soap:Envelope>
+
+    headers: 
+      Accept: 
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding: 
+      - gzip, deflate
+      Content-Type: 
+      - text/xml; charset=utf-8
+      Soapaction: 
+      - https://ssl.ditonlinebetalingssystem.dk/remote/subscription/getsubscriptions
+      User-Agent: 
+      - Ruby / epay (0.0.1)
+      Content-Length: 
+      - "463"
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      Cache-Control: 
+      - private, max-age=0
+      Content-Type: 
+      - text/xml; charset=utf-8
+      X-Aspnet-Version: 
+      - 2.0.50727
+      X-Powered-By: 
+      - ASP.NET
+      Date: 
+      - Thu, 15 Mar 2012 12:41:51 GMT
+      Content-Length: 
+      - "763"
+    body: 
+      encoding: US-ASCII
+      string: <?xml version="1.0" encoding="utf-8"?><soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><soap:Body><getsubscriptionsResponse xmlns="https://ssl.ditonlinebetalingssystem.dk/remote/subscription"><getsubscriptionsResult>true</getsubscriptionsResult><subscriptionAry><SubscriptionInformationType><subscriptionid>418486</subscriptionid><description>A new subscriber</description><created>2012-03-15T13:42:00</created><expmonth>10</expmonth><expyear>15</expyear><cardtypeid>MASTERCARD</cardtypeid><transactionList /></SubscriptionInformationType></subscriptionAry><epayresponse>-1</epayresponse></getsubscriptionsResponse></soap:Body></soap:Envelope>
+    http_version: 
+  recorded_at: Thu, 15 Mar 2012 12:41:52 GMT
+recorded_with: VCR 2.0.0

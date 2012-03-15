@@ -83,7 +83,7 @@ module Epay
         end
         
         it "is has card with card number" do
-          subscription.data['card_no'].should == '555555XXXXXX5000'
+          subscription.card_no.should == '555555XXXXXX5000'
         end
       end
       

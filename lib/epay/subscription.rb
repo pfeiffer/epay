@@ -2,6 +2,8 @@ module Epay
   class Subscription
     include Model
     
+    attr_accessor :card_no
+    
     def self.inspectable_attributes
       %w(id created_at description)
     end
@@ -19,7 +21,7 @@ module Epay
           :exp_year   => data['expyear'].to_i,
           :exp_month  => data['expmonth'].to_i,
           :kind       => data['cardtypeid'].downcase.to_sym,
-          :number     => data['card_no']
+          :number     => card_no
         })
       end
     end
@@ -98,7 +100,12 @@ module Epay
         
         if query['accept']
           # Return the new subscriber
-          new(query["subscriptionid"].to_i, 'card_no' => params[:card_no].gsub(/^(\d{6})\d{6}(\d{4})/, "\\1XXXXXX\\2")).reload
+          subscription = new(query["subscriptionid"].to_i).reload
+          
+          # Set (obfuscated) card number:
+          subscription.card_no = query["tcardno"]
+          
+          subscription
         else
           new(nil, 'error' => query["error"])
         end
