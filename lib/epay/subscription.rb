@@ -18,7 +18,8 @@ module Epay
         Card.new({
           :exp_year   => data['expyear'].to_i,
           :exp_month  => data['expmonth'].to_i,
-          :kind       => data['cardtypeid'].downcase.to_sym
+          :kind       => data['cardtypeid'].downcase.to_sym,
+          :number     => data['card_no']
         })
       end
     end
@@ -97,7 +98,7 @@ module Epay
         
         if query['accept']
           # Return the new subscriber
-          new(query["subscriptionid"].to_i)
+          new(query["subscriptionid"].to_i, 'card_no' => params[:card_no].gsub(/^(\d{6})\d{6}(\d{4})/, "\\1XXXXXX\\2"))
         else
           new(nil, 'error' => query["error"])
         end

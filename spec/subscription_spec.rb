@@ -39,9 +39,9 @@ module Epay
       end
       
       context "when no transaction has been made" do
-        it "doesn't set number on card" do
+        it "returns card with no number" do
           subscription.stub(:transactions) { [] }
-          Card.should_receive(:new).with(:exp_year => 12, :exp_month => 10, :kind => :visa)
+          Card.should_receive(:new).with(:exp_year => 12, :exp_month => 10, :kind => :visa, :number => nil)
           subscription.card
         end
       end
@@ -70,11 +70,20 @@ module Epay
     end
     
     describe ".create" do
-      it "creates a new subscription" do
-        VCR.use_cassette('subscription_creation') do
-          subscription = Subscription.create(:card_no => '5555555555555000', :exp_year => '15', :exp_month => '10', :cvc => '999', :description => 'A new subscriber', :currency => :DKK)
+      context "when card data is valid" do
+        let(:subscription) do
+          VCR.use_cassette('subscription_creation') do
+            Subscription.create(:card_no => '5555555555555000', :exp_year => '15', :exp_month => '10', :cvc => '999', :description => 'A new subscriber', :currency => :DKK)
+          end
+        end
+        
+        it "returns subscription" do
           subscription.should be_a Subscription
           subscription.transactions.should be_empty
+        end
+        
+        it "is has card with card number" do
+          subscription.data['card_no'].should == '555555XXXXXX5000'
         end
       end
       
