@@ -69,7 +69,7 @@ module Epay
         if response.success?
           Transaction.find(response.data['transactionid'])
         else
-          Transaction.new(nil, {'ErrorCode' => response.data['pbsresponse']})
+          Transaction.new(nil, 'error' => response.data['pbsresponse'], 'failed' => true)
         end
       end
     end

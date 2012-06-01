@@ -130,7 +130,7 @@ module Epay
           
           Api.stub(:request).with(SUBSCRIPTION_SOAP_URL, 'authorize', anything).and_yield(response)
           
-          Transaction.should_receive(:new).with(nil, 'ErrorCode' => '404')
+          Transaction.should_receive(:new).with(nil, 'error' => '404', 'failed' => true)
           subscription.authorize(:order_no => 'NEW ORDER', :amount => 10.0, :currency => :DKK)
         end
       end
