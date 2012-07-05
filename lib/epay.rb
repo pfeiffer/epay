@@ -85,6 +85,10 @@ module Epay
     27 => :mobilpenge
   }
   
+  TEMPORARY_ERROR_CODES = ['-5511', '100', '102', '116', '121', '255', '256', '906',
+                            '907', '910', '911', '912', '915', '920', '921', '923',
+                            '945', '946', '-1000', '-1005', '-23', '-3', '-4']
+  
   mattr_accessor :merchant_number, :default_currency, :password
   
   class ApiError < StandardError; end

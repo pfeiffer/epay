@@ -111,6 +111,22 @@ module Epay
       end
     end
     
+    describe "#permanent_error?" do
+      it "is true unless error code is temporary" do
+        transaction.stub(:failed?) { true }
+        transaction.stub(:temporary_error?) { false }
+        transaction.permanent_error?.should be_true
+      end
+    end
+    
+    describe "#temporary_error?" do
+      it "is true if error code is a temporary code" do
+        transaction.stub(:failed?) { true }
+        transaction.stub(:error) { '915' }
+        transaction.temporary_error?.should be_true
+      end
+    end
+          
     describe "#capture" do
       it "calls capture action with transaction id and amount in minor" do
         transaction.stub(:amount) { 10 }

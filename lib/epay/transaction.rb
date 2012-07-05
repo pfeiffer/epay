@@ -76,6 +76,14 @@ module Epay
       data['error']
     end
     
+    def temporary_error?
+      failed? && TEMPORARY_ERROR_CODES.include?(error)
+    end
+    
+    def permanent_error?
+      failed? && !temporary_error?
+    end
+    
     def test?
       data['mode'] == 'MODE_EPAY' || data['mode'] == 'MODE_TEST'
     end
