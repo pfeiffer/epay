@@ -1,5 +1,11 @@
 # Changelog: epay
 
+## 0.0.4
+- Ruby 1.9.7 and REE compatibility
+
+## 0.0.3
+- Add methods for permanent and temporary error
+
 ## 0.0.2
 - Bugfix: Subscriptions now properly returns failed transaction, if unable to authorize.
 
