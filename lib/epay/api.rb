@@ -73,7 +73,7 @@ module Epay
           end
         end
         
-        RestClient.post service_url, xml.target!, headers do |raw_response|
+        RestClient.post service_url, xml.target!, headers do |raw_response, request, result|
           response = Response.new(raw_response, action)
           
           if block_given?
