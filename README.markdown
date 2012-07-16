@@ -2,6 +2,10 @@ ePay
 =========
 This gem is extracted from Netdate.dk, and gives you a comfortable and easy way of communicating with the ePay API.
 
+Build status
+---------
+[![Build Status](https://secure.travis-ci.org/pfeiffer/epay.png)](http://travis-ci.org/pfeiffer/epay)
+
 Installation
 ---------
 Installation is pretty straight-forward. Just install the gem:
