@@ -37,8 +37,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "webmock", "~>1.7"
   s.add_development_dependency "nokogiri"
   s.add_development_dependency "vcr", "~> 2.0.0.rc1"
+  s.add_development_dependency "rake"
 
-  # These gems are not needed for CI at <http://travis-ci.org/#!/karmi/tire>
+  # These gems are not needed for CI
   #
   unless ENV["CI"]
     s.add_development_dependency "guard"
