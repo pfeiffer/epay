@@ -1,5 +1,8 @@
 # Changelog: epay
 
+## 0.0.5
+- No code changes. Updated description and URL for gem.
+
 ## 0.0.4
 - Ruby 1.9.7 and REE compatibility
 
