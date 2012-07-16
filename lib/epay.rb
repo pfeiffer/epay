@@ -2,6 +2,8 @@ require 'rest_client'
 require 'active_support/core_ext'
 require 'builder'
 
+require 'extensions/hash'
+
 require 'epay/version'
 
 require 'epay/api'

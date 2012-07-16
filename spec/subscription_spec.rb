@@ -10,7 +10,7 @@ module Epay
     
     describe "attributes" do
       it "has created_at" do
-        subscription.created_at.should == Time.new(2012, 2, 9, 12, 11)
+        subscription.created_at.should == Time.local(2012, 2, 9, 12, 11)
       end
       
       it "has description" do

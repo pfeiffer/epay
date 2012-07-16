@@ -43,7 +43,7 @@ module Epay
       end
       
       it "has created_at" do
-        transaction.created_at.should == Time.new(2012, 2, 10, 11, 30, 0)
+        transaction.created_at.should == Time.local(2012, 2, 10, 11, 30, 0)
       end
       
       it "has error" do
