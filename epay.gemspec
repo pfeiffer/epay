@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Epay::VERSION
   s.platform    = Gem::Platform::RUBY
   s.summary       = "Ruby client for ePay API"
-  s.homepage      = "http://github.com/netdate/epay"
+  s.homepage      = "http://github.com/pfeiffer/epay"
   s.authors       = [ 'Mattias Pfeiffer' ]
   s.email         = 'mattias@netdate.dk'
 
@@ -50,6 +50,6 @@ Gem::Specification.new do |s|
   end
 
   s.description = <<-DESC
-    Coming soon..
+    Ruby client for ePay API. Supports manipulating transactions and subscriptions.
   DESC
 end
