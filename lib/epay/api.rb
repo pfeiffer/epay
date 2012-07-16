@@ -3,7 +3,7 @@ module Epay
     class << self
       def authorize(post)
         # Authorize transaction:
-        RestClient.post AUTHORIZE_URL, post do |response|
+        RestClient.post AUTHORIZE_URL, post do |response, request, result|
           # The authorization request redirects to either accept or decline url:
           if location = response.headers[:location]
             query = CGI::parse(URI.parse(location.gsub(' ', '%20')).query)
