@@ -1,6 +1,6 @@
 ePay
 =========
-This gem is extracted from Netdate.dk, and gives you a comfortable and easy way of communicating with the ePay API.
+This gem is extracted from a project, and gives you a comfortable and easy way of communicating with the ePay API.
 
 Build status
 ---------
@@ -14,7 +14,7 @@ Installation is pretty straight-forward. Just install the gem:
 
 Usage
 ---------
-See http://pfeiffer.github.com/epay/
+See http://pfeiffer.github.io/epay/
 
 License
 ---------
@@ -22,4 +22,4 @@ Released under MIT-license.
 
 -----
 
-[Mattias Pfeiffer](http://pfeiffer.dk/) - [Netdate.dk](http://netdate.dk/)
+[Mattias Pfeiffer](http://pfeiffer.dk/)

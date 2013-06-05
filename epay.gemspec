@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.summary       = "Ruby client for ePay API"
   s.homepage      = "http://github.com/pfeiffer/epay"
   s.authors       = [ 'Mattias Pfeiffer' ]
-  s.email         = 'mattias@netdate.dk'
+  s.email         = 'mattias@pfeiffer.dk'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
