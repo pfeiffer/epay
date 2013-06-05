@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   #
   s.add_dependency "rest-client", "~> 1.6.0"
   s.add_dependency "activesupport", "~> 3"
-  s.add_dependency "builder", "~> 2.1.2"
+  s.add_dependency "builder", "~> 3"
 
   # = Development dependencies
   #
