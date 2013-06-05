@@ -1,5 +1,9 @@
 # Changelog: epay
 
+## 0.0.6
+- Loosen version dependency of builder
+- README-changes
+
 ## 0.0.5
 - No code changes. Updated description and URL for gem.
 
